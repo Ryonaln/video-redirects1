@@ -1,9 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta http-equiv="refresh" content="0; url=https://streamtape.com/e/abcd1234xyz">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý Link Video</title>
+  <script>
+    fetch('https://script.google.com/macros/s/YOUR_SCRIPT_URL/exec') // Thay YOUR_SCRIPT_URL bằng URL của Google Apps Script
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(item => {
+          // Hiển thị video và ảnh lên trang web
+          document.getElementById('videos').innerHTML += `
+            <div>
+              <h2>${item.name}</h2>
+              <iframe src="${item.videoLink}" width="100%" height="400"></iframe>
+              <img src="${item.imageLink}" alt="Thumbnail" width="100%">
+            </div>
+          `;
+        });
+      });
+  </script>
 </head>
 <body>
-  <p>If you're not redirected, <a href="https://streamtape.com/e/abcd1234xyz">click here</a>.</p>
+  <div id="videos"></div>
 </body>
 </html>
